@@ -1266,3 +1266,47 @@ footer {
         font-size: 0.9em;
     }
 }
+/* ... (Gaya CSS yang sudah ada sebelumnya) ... */
+
+/* New style for Disclaimer Box */
+.disclaimer-box {
+    background-color: #fff3cd; /* Light yellow */
+    border: 1px solid #ffeeba; /* Darker yellow border */
+    color: #856404; /* Dark yellow text */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px auto 50px auto;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: left; /* Ensure text alignment */
+}
+
+.disclaimer-box i {
+    font-size: 2.2em;
+    color: #ffd700; /* Yellow icon */
+}
+
+.disclaimer-box p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 0; /* Remove default paragraph margin */
+}
+
+.disclaimer-box strong {
+    color: #6a0572; /* Primary color for emphasis */
+}
+
+/* Penyesuaian responsif untuk disclaimer box */
+@media (max-width: 768px) {
+    .disclaimer-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    .disclaimer-box i {
+        margin-bottom: 10px;
+    }
+}
