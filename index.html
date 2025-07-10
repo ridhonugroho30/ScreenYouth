@@ -17,7 +17,7 @@
                     <li><a href="#home">Beranda</a></li>
                     <li><a href="#about">Tentang Kami</a></li>
                     <li><a href="#screening">Mulai Screening</a></li>
-                    <li><a href="#resources">Sumber Daya</a></li>
+                    <li><a href="resources.html">Sumber Daya</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
             </nav>
@@ -33,7 +33,7 @@
             <li><a href="#home">Beranda</a></li>
             <li><a href="#about">Tentang Kami</a></li>
             <li><a href="#screening">Mulai Screening</a></li>
-            <li><a href="#resources">Sumber Daya</a></li>
+            <li><a href="resources.html">Sumber Daya</a></li>
             <li><a href="#contact">Kontak</a></li>
         </ul>
     </div>
@@ -163,61 +163,13 @@
                                 </ul>
                         </div>
                         <div class="result-action">
-                            <button class="cta-button primary" onclick="scrollToSection('resources')">Jelajahi Sumber Daya Lainnya</button>
+                            <a href="resources.html" class="cta-button primary">Jelajahi Sumber Daya Lainnya</a>
                             <button class="cta-button secondary" onclick="restartScreening()">Ulangi Skrining</button>
                         </div>
                     </div>
                     <div class="nav-buttons">
                         <button class="next-prev-btn prev" onclick="prevQuestionSet()"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="resources-section animated-section" id="resources">
-        <div class="container">
-            <h2>Sumber Daya & Dukungan</h2>
-            <p class="section-subtitle">Tidak sendiri, selalu ada bantuan di sekitarmu.</p>
-            <div class="resource-grid">
-                <div class="resource-item reveal-on-scroll" data-detail="konseling">
-                    <img src="images/resource-1.svg" alt="Ilustrasi Konseling">
-                    <h3>Layanan Konseling</h3>
-                    <p>Temukan profesional yang bisa membantumu.</p>
-                </div>
-                <div class="resource-item reveal-on-scroll" data-detail="edukasi">
-                    <img src="images/resource-2.svg" alt="Ilustrasi Artikel Edukasi">
-                    <h3>Artikel Edukasi</h3>
-                    <p>Baca lebih lanjut tentang kesehatan mental remaja.</p>
-                </div>
-                <div class="resource-item reveal-on-scroll" data-detail="relaksasi">
-                    <img src="images/resource-3.svg" alt="Ilustrasi Latihan Meditasi">
-                    <h3>Latihan Relaksasi</h3>
-                    <p>Panduan meditasi singkat & teknik pernapasan.</p>
-                </div>
-                <div class="resource-item reveal-on-scroll" data-detail="kisah-inspiratif">
-                    <img src="images/resource-4.svg" alt="Ilustrasi Kisah Inspiratif">
-                    <h3>Kisah Inspiratif</h3>
-                    <p>Pelajari dari pengalaman remaja lain.</p>
-                </div>
-                 <div class="resource-item reveal-on-scroll" data-detail="pola-hidup">
-                    <img src="images/resource-5.svg" alt="Ilustrasi Pola Hidup Sehat">
-                    <h3>Pola Hidup Sehat</h3>
-                    <p>Tips menjaga fisik dan mentalmu tetap bugar.</p>
-                </div>
-                <div class="resource-item reveal-on-scroll" data-detail="dukungan-sosial">
-                    <img src="images/resource-6.svg" alt="Ilustrasi Dukungan Sosial">
-                    <h3>Dukungan Sosial</h3>
-                    <p>Membangun lingkaran pertemanan yang positif.</p>
-                </div>
-            </div>
-
-            <div class="resource-detail-overlay" id="resource-detail-overlay">
-                <div class="resource-detail-content">
-                    <span class="close-detail-btn" onclick="closeResourceDetail()">&times;</span>
-                    <h3 id="detail-title"></h3>
-                    <p id="detail-text"></p>
-                    <a href="#" id="detail-link" target="_blank" class="detail-link-btn" style="display: none;">Kunjungi Halaman</a>
                 </div>
             </div>
         </div>
@@ -243,15 +195,22 @@
     </footer>
 
     <script>
-        // Smooth scroll
+        // Smooth scroll untuk navigasi internal di index.html
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Close mobile nav if open
-                document.getElementById('mobile-nav-overlay').classList.remove('open');
+                const targetId = this.getAttribute('href');
+                // Hanya lakukan smooth scroll jika target ada di halaman ini
+                if (document.querySelector(targetId)) {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile nav if open
+                    document.getElementById('mobile-nav-overlay').classList.remove('open');
+                } else {
+                    // Jika tidak, biarkan browser menangani link eksternal (contohnya resources.html)
+                    window.location.href = targetId;
+                }
             });
         });
 
@@ -268,9 +227,9 @@
             document.getElementById('mobile-nav-overlay').classList.remove('open');
         });
 
-        // Screening Quiz Logic
+        // Screening Quiz Logic (tidak ada perubahan besar di sini)
         let currentQuestionSet = 1;
-        const totalQuestionSets = 5; // Includes the result set
+        const totalQuestionSets = 5;
 
         function showQuestionSet(setNumber) {
             document.querySelectorAll('.question-set').forEach(qs => {
@@ -298,39 +257,38 @@
             const currentQsElement = document.getElementById(`qs-${currentQuestionSet}`);
             const selectedOption = currentQsElement.querySelector(`input[name="q${currentQuestionSet}"]:checked`);
 
-            // Validate if an option is selected before moving to next question (not for result page)
             if (currentQuestionSet < totalQuestionSets -1 && !selectedOption) {
                 alert("Mohon pilih salah satu jawaban sebelum melanjutkan.");
                 return;
             }
 
             if (currentQuestionSet < totalQuestionSets) {
-                currentQsElement.classList.add('transition-left'); // Animate current out to left
+                currentQsElement.classList.add('transition-left');
                 setTimeout(() => {
                     currentQsElement.classList.remove('active', 'transition-left');
                     currentQuestionSet++;
-                    document.getElementById(`qs-${currentQuestionSet}`).classList.add('active', 'transition-right-enter'); // Animate next in from right
+                    document.getElementById(`qs-${currentQuestionSet}`).classList.add('active', 'transition-right-enter');
                     setTimeout(() => {
                         document.getElementById(`qs-${currentQuestionSet}`).classList.remove('transition-right-enter');
-                    }, 300); // Remove class after transition
+                    }, 300);
                     updateStepIndicators();
-                }, 300); // Match CSS transition time
+                }, 300);
             }
         }
 
         function prevQuestionSet() {
             if (currentQuestionSet > 1) {
                 const currentQsElement = document.getElementById(`qs-${currentQuestionSet}`);
-                currentQsElement.classList.add('transition-right'); // Animate current out to right
+                currentQsElement.classList.add('transition-right');
                 setTimeout(() => {
                     currentQsElement.classList.remove('active', 'transition-right');
                     currentQuestionSet--;
-                    document.getElementById(`qs-${currentQuestionSet}`).classList.add('active', 'transition-left-enter'); // Animate prev in from left
+                    document.getElementById(`qs-${currentQuestionSet}`).classList.add('active', 'transition-left-enter');
                     setTimeout(() => {
                         document.getElementById(`qs-${currentQuestionSet}`).classList.remove('transition-left-enter');
-                    }, 300); // Remove class after transition
+                    }, 300);
                     updateStepIndicators();
-                }, 300); // Match CSS transition time
+                }, 300);
             }
         }
 
@@ -349,10 +307,9 @@
             }
         }
 
-        // --- Perubahan di Fungsi calculateResult() ---
         function calculateResult() {
             let totalScore = 0;
-            for (let i = 1; i <= 4; i++) { // Only questions 1-4
+            for (let i = 1; i <= 4; i++) {
                 const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
                 if (selectedOption) {
                     totalScore += parseInt(selectedOption.value);
@@ -360,7 +317,7 @@
             }
 
             let resultText = "";
-            let interventions = []; // Array to store suggested interventions
+            let interventions = [];
 
             if (totalScore <= 3) {
                 resultText = "Selamat! Dari hasil skrining awal, kondisi mentalmu terlihat cukup stabil. Tetap jaga pola hidup sehat dan terus positif!";
@@ -396,14 +353,15 @@
 
             document.getElementById('result-text').textContent = resultText;
 
-            // Display suggested interventions
             const suggestedInterventionsList = document.getElementById('suggested-interventions');
-            suggestedInterventionsList.innerHTML = ''; // Clear previous interventions
+            suggestedInterventionsList.innerHTML = '';
             interventions.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item.text;
-                // Add a click listener to open the relevant resource detail
-                li.onclick = () => showResourceDetailFromIntervention(item.type);
+                li.onclick = () => {
+                    // Redirect to resources.html with a hash for the specific resource
+                    window.location.href = `resources.html#${item.type}`;
+                };
                 suggestedInterventionsList.appendChild(li);
             });
         }
@@ -413,80 +371,20 @@
                 radio.checked = false;
             });
             showQuestionSet(1);
-            document.getElementById('suggested-interventions').innerHTML = ''; // Clear interventions
+            document.getElementById('suggested-interventions').innerHTML = '';
         }
 
         // Initial call to set up the first question set
         showQuestionSet(1);
 
-        // --- Perubahan dan Penambahan Data di resourceDetails ---
-        const resourceDetails = {
-            'konseling': {
-                title: 'Layanan Konseling Profesional',
-                text: 'Jika kamu merasa kesulitan mengatasi masalah sendirian, berbicara dengan konselor atau psikolog profesional dapat sangat membantu. Mereka dapat memberikan strategi dan dukungan yang kamu butuhkan. Ingat, mencari bantuan adalah tanda kekuatan.',
-                link: 'https://pijarpsikologi.org/cari-psikolog-online/' // Contoh link spesifik
-            },
-            'edukasi': {
-                title: 'Artikel Edukasi Kesehatan Mental',
-                text: 'Perluas pemahamanmu tentang berbagai aspek kesehatan mental melalui koleksi artikel edukatif kami. Pengetahuan adalah langkah awal untuk perubahan dan pengelolaan diri yang lebih baik.',
-                link: 'https://hellosehat.com/kesehatan-mental/remaja/' // Contoh link spesifik
-            },
-            'relaksasi': {
-                title: 'Latihan Relaksasi & Meditasi',
-                text: 'Teknik relaksasi dan meditasi dapat membantu menenangkan pikiran, mengurangi stres, dan meningkatkan fokus. Cobalah panduan audio atau video singkat kami untuk membantumu merasa lebih tenang dan terkontrol.',
-                link: 'https://calm.com/' // Contoh link
-            },
-            'kisah-inspiratif': {
-                title: 'Kisah Inspiratif & Pengalaman Nyata',
-                text: 'Dengarkan atau baca cerita dari remaja lain yang telah melalui tantangan kesehatan mental dan berhasil mengatasinya. Kamu akan merasa tidak sendiri, mendapatkan inspirasi, dan menemukan harapan dari pengalaman mereka.',
-                link: '#' // Ganti dengan link ke halaman cerita di website Anda
-            },
-            'pola-hidup': {
-                title: 'Pola Hidup Sehat untuk Kesehatan Mental',
-                text: 'Kesehatan fisik sangat memengaruhi kesehatan mental. Pelajari tips tentang pentingnya tidur cukup, nutrisi seimbang, hidrasi yang cukup, dan olahraga teratur untuk mendukung kesejahteraan mentalmu.',
-                link: 'https://www.halodoc.com/artikel/menjaga-kesehatan-mental-dengan-gaya-hidup-sehat' // Contoh link
-            },
-            'dukungan-sosial': {
-                title: 'Membangun Dukungan Sosial yang Positif',
-                text: 'Hubungan yang sehat dengan teman dan keluarga sangat penting. Temukan cara untuk membangun dan memelihara koneksi sosial yang kuat, serta cara untuk mendekati orang yang kamu percaya ketika kamu membutuhkan dukungan.',
-                link: '#' // Ganti dengan link ke artikel tentang dukungan sosial
-            }
-        };
-
-        document.querySelectorAll('.resource-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const detailId = this.dataset.detail;
-                openResourceDetail(detailId);
-            });
-        });
-
-        function openResourceDetail(detailId) {
-            const detail = resourceDetails[detailId];
-            if (!detail) return; // Guard clause
-
-            document.getElementById('detail-title').textContent = detail.title;
-            document.getElementById('detail-text').textContent = detail.text;
-            const detailLink = document.getElementById('detail-link');
-            if (detail.link && detail.link !== '#') {
-                detailLink.href = detail.link;
-                detailLink.style.display = 'inline-block';
-            } else {
-                detailLink.style.display = 'none';
-            }
-
-            document.getElementById('resource-detail-overlay').classList.add('open');
-        }
-
-        // New function to open resource detail from an intervention suggestion
-        function showResourceDetailFromIntervention(resourceKey) {
-            openResourceDetail(resourceKey);
-            // Optionally, scroll to the resources section if it's not visible
-            scrollToSection('resources');
-        }
-
-        function closeResourceDetail() {
-            document.getElementById('resource-detail-overlay').classList.remove('open');
-        }
+        // --- Hapus logika resourceDetails dan overlay dari index.html ---
+        // Karena ini akan dikelola di resources.html
+        // Resource Details Logic (Dihapus dari sini)
+        // const resourceDetails = {...};
+        // document.querySelectorAll('.resource-item').forEach(...);
+        // function openResourceDetail(...);
+        // function showResourceDetailFromIntervention(...); // ini dimodifikasi di atas
+        // function closeResourceDetail(...);
 
         // Scroll Reveal Animation (Sederhana)
         const animatedSections = document.querySelectorAll('.animated-section');
@@ -502,9 +400,9 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // observer.unobserve(entry.target); // Uncomment if you want it to animate only once
+                    // observer.unobserve(entry.target);
                 } else {
-                    // entry.target.classList.remove('is-visible'); // Uncomment if you want it to re-animate on scroll back up
+                    // entry.target.classList.remove('is-visible');
                 }
             });
         }, observerOptions);
@@ -513,7 +411,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target); // Animate only once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
