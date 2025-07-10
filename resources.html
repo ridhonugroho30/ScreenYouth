@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiwa Muda - Sumber Daya & Dukungan</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Tambahkan gaya khusus untuk resources.html jika diperlukan */
+        .page-hero {
+            background: linear-gradient(135deg, #a406af 0%, #b34bff 100%); /* Warna gradien berbeda */
+            color: var(--text-light);
+            padding: 100px 0;
+            text-align: center;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .page-hero p {
+            font-size: 1.4em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resource-category-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .resource-category-section:nth-of-type(even) {
+            background-color: var(--text-light);
+        }
+
+        .resource-category-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .resource-category-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .resource-category-section p.description {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .category-content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .content-card {
+            background-color: var(--text-light);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .content-card p {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .content-card a.read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .content-card a.read-more:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive adjustments for this new page */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.8em;
+            }
+            .page-hero p {
+                font-size: 1.2em;
+            }
+            .resource-category-section h2 {
+                font-size: 2.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 2.2em;
+            }
+            .page-hero p {
+                font-size: 1em;
+            }
+            .resource-category-section h2 {
+                font-size: 1.8em;
+            }
+            .content-card {
+                padding: 20px;
+            }
+            .content-card h3 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">Jiwa Muda</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Beranda</a></li>
+                    <li><a href="index.html#about">Tentang Kami</a></li>
+                    <li><a href="index.html#screening">Mulai Screening</a></li>
+                    <li><a href="resources.html">Sumber Daya</a></li>
+                    <li><a href="index.html#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <div class="close-btn" id="close-mobile-nav">&times;</div>
+        <ul>
+            <li><a href="index.html#home">Beranda</a></li>
+            <li><a href="index.html#about">Tentang Kami</a></li>
+            <li><a href="index.html#screening">Mulai Screening</a></li>
+            <li><a href="resources.html">Sumber Daya</a></li>
+            <li><a href="index.html#contact">Kontak</a></li>
+        </ul>
+    </div>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Temukan Dukungan yang Kamu Butuhkan</h1>
+            <p>Berbagai sumber daya dan informasi untuk membantu remaja memahami, menjaga, dan meningkatkan kesehatan mental mereka.</p>
+        </div>
+    </section>
+
+    <section class="resource-category-section animated-section" id="konseling">
+        <div class="container">
+            <h2>Layanan Konseling Profesional</h2>
+            <p class="description">Jika kamu merasa kesulitan mengatasi masalah sendirian, berbicara dengan konselor atau psikolog profesional dapat sangat membantu. Mereka dapat memberikan strategi dan dukungan yang kamu butuhkan. Ingat, mencari bantuan adalah tanda kekuatan.</p>
+            <div class="category-content-grid">
+                <div class="content-card reveal-on-scroll">
+                    <h3>Konseling Online Gratis</h3>
+                    <p>Platform yang menyediakan sesi konseling online dengan psikolog berlisensi secara gratis atau terjangkau untuk remaja.</p>
+                    <a href="https://pijarpsikologi.org/cari-psikolog-online/" target="_blank" class="read-more">Kunjungi <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Daftar Psikolog Terdekat</h3>
+                    <p>Direktori psikolog dan klinik kesehatan mental di area sekitarmu. Temukan bantuan tatap muka yang nyaman.</p>
+                    <a href="#" target="_blank" class="read-more">Lihat Direktori <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>FAQ Seputar Konseling</h3>
+                    <p>Punya pertanyaan tentang apa itu konseling, manfaatnya, atau bagaimana prosesnya? Temukan jawabannya di sini.</p>
+                    <a href="#" target="_blank" class="read-more">Baca FAQ <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resource-category-section animated-section" id="edukasi">
+        <div class="container">
+            <h2>Artikel Edukasi Kesehatan Mental</h2>
+            <p class="description">Perluas pemahamanmu tentang berbagai aspek kesehatan mental melalui koleksi artikel edukatif kami. Pengetahuan adalah langkah awal untuk perubahan dan pengelolaan diri yang lebih baik.</p>
+            <div class="category-content-grid">
+                <div class="content-card reveal-on-scroll">
+                    <h3>Tanda-tanda Stres pada Remaja</h3>
+                    <p>Pelajari cara mengenali gejala stres dan dampaknya pada kesehatan mental dan fisikmu.</p>
+                    <a href="https://hellosehat.com/kesehatan-mental/remaja/tanda-depresi-remaja/" target="_blank" class="read-more">Baca Artikel <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Mengatasi Kecemasan Berlebihan</h3>
+                    <p>Strategi praktis dan tips untuk mengelola perasaan cemas yang mungkin kamu alami sehari-hari.</p>
+                    <a href="#" target="_blank" class="read-more">Pelajari Caranya <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Pentingnya Bantuan Profesional</h3>
+                    <p>Memahami mengapa mencari bantuan dari ahli adalah langkah yang kuat dan bagaimana stigma dapat dihilangkan.</p>
+                    <a href="#" target="_blank" class="read-more">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resource-category-section animated-section" id="relaksasi">
+        <div class="container">
+            <h2>Latihan Relaksasi & Meditasi</h2>
+            <p class="description">Teknik relaksasi dan meditasi dapat membantu menenangkan pikiran, mengurangi stres, dan meningkatkan fokus. Cobalah panduan audio atau video singkat kami untuk membantumu merasa lebih tenang dan terkontrol.</p>
+            <div class="category-content-grid">
+                <div class="content-card reveal-on-scroll">
+                    <h3>Panduan Meditasi Singkat</h3>
+                    <p>Mulai perjalanan meditasimu dengan panduan 5 menit untuk pemula.</p>
+                    <a href="https://www.calm.com/blog/free-meditation-apps" target="_blank" class="read-more">Mulai Meditasi <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Teknik Pernapasan untuk Tenang</h3>
+                    <p>Latih teknik pernapasan dalam yang efektif untuk meredakan kecemasan dan kepanikan.</p>
+                    <a href="#" target="_blank" class="read-more">Pelajari Teknik <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Musik Penenang Pikiran</h3>
+                    <p>Koleksi musik dan suara alam yang dirancang khusus untuk relaksasi dan tidur.</p>
+                    <a href="#" target="_blank" class="read-more">Dengarkan Sekarang <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resource-category-section animated-section" id="kisah-inspiratif">
+        <div class="container">
+            <h2>Kisah Inspiratif & Pengalaman Nyata</h2>
+            <p class="description">Dengarkan atau baca cerita dari remaja lain yang telah melalui tantangan kesehatan mental dan berhasil mengatasinya. Kamu akan merasa tidak sendiri, mendapatkan inspirasi, dan menemukan harapan dari pengalaman mereka.</p>
+            <div class="category-content-grid">
+                <div class="content-card reveal-on-scroll">
+                    <h3>Perjalananku Melawan Depresi</h3>
+                    <p>Cerita nyata seorang remaja yang bangkit dari depresi dengan dukungan dan terapi.</p>
+                    <a href="#" target="_blank" class="read-more">Baca Kisahku <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Menemukan Kekuatan di Tengah Kecemasan</h3>
+                    <p>Bagaimana hobi dan dukungan teman membantu mengatasi kecemasan sosial.</p>
+                    <a href="#" target="_blank" class="read-more">Lihat Kisah Lainnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resource-category-section animated-section" id="pola-hidup">
+        <div class="container">
+            <h2>Pola Hidup Sehat untuk Kesehatan Mental</h2>
+            <p class="description">Kesehatan fisik sangat memengaruhi kesehatan mental. Pelajari tips tentang pentingnya tidur cukup, nutrisi seimbang, hidrasi yang cukup, dan olahraga teratur untuk mendukung kesejahteraan mentalmu.</p>
+            <div class="category-content-grid">
+                <div class="content-card reveal-on-scroll">
+                    <h3>Manfaat Tidur Cukup</h3>
+                    <p>Mengapa tidur 8 jam sangat penting untuk pikiran dan suasana hatimu.</p>
+                    <a href="#" target="_blank" class="read-more">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Gizi Seimbang untuk Mood Baik</h3>
+                    <p>Makanan yang dapat meningkatkan energi dan membantu menjaga kestabilan emosi.</p>
+                    <a href="https://www.halodoc.com/artikel/menjaga-kesehatan-mental-dengan-gaya-hidup-sehat" target="_blank" class="read-more">Resep & Tips <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Olahraga Anti-Stres</h3>
+                    <p>Jenis olahraga ringan yang bisa kamu lakukan untuk mengurangi ketegangan dan meningkatkan mood.</p>
+                    <a href="#" target="_blank" class="read-more">Mulai Bergerak <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resource-category-section animated-section" id="dukungan-sosial">
+        <div class="container">
+            <h2>Membangun Dukungan Sosial yang Positif</h2>
+            <p class="description">Hubungan yang sehat dengan teman dan keluarga sangat penting. Temukan cara untuk membangun dan memelihara koneksi sosial yang kuat, serta cara untuk mendekati orang yang kamu percaya ketika kamu membutuhkan dukungan.</p>
+            <div class="category-content-grid">
+                <div class="content-card reveal-on-scroll">
+                    <h3>Tips Berkomunikasi Efektif</h3>
+                    <p>Cara menyampaikan perasaan dan pikiranmu kepada orang lain tanpa rasa canggung.</p>
+                    <a href="#" target="_blank" class="read-more">Pelajari Tips <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Mencari Teman Baru</h3>
+                    <p>Panduan untuk memperluas lingkaran pertemanan dan menemukan koneksi yang bermakna.</p>
+                    <a href="#" target="_blank" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="content-card reveal-on-scroll">
+                    <h3>Bagaimana Meminta Bantuan</h3>
+                    <p>Jangan takut meminta bantuan. Pelajari langkah-langkah untuk mendekati orang yang dapat mendukungmu.</p>
+                    <a href="#" target="_blank" class="read-more">Panduan Lengkap <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section animated-section" id="contact-footer">
+        <div class="container">
+            <h2>Punya Pertanyaan?</h2>
+            <p class="section-subtitle">Jangan ragu untuk menghubungi kami jika kamu memiliki pertanyaan lebih lanjut atau membutuhkan informasi.</p>
+            <a href="index.html#contact" class="cta-button primary">Hubungi Kami Sekarang <i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jiwa Muda. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll untuk navigasi internal di resources.html
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile nav if open
+                document.getElementById('mobile-nav-overlay').classList.remove('open');
+            });
+        });
+
+        // Mobile Nav Toggle
+        document.getElementById('hamburger-menu').addEventListener('click', function() {
+            document.getElementById('mobile-nav-overlay').classList.add('open');
+        });
+
+        document.getElementById('close-mobile-nav').addEventListener('click', function() {
+            document.getElementById('mobile-nav-overlay').classList.remove('open');
+        });
+
+        // Scroll Reveal Animation (sama seperti di index.html)
+        const animatedSections = document.querySelectorAll('.animated-section');
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // observer.unobserve(entry.target);
+                } else {
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        animatedSections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // --- Logic untuk menangani hash di URL ---
+        // Jika halaman dibuka dengan hash (misal resources.html#konseling), scroll ke bagian tersebut
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    // Beri sedikit delay agar page loading dan CSS rendering selesai
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
