@@ -157,8 +157,13 @@
                     <h3>Hasil Skrining Awal Anda</h3>
                     <div class="screening-result">
                         <p id="result-text"></p>
+                        <div class="intervention-suggestions">
+                            <h4>Langkah Selanjutnya & Edukasi Rekomendasi:</h4>
+                            <ul id="suggested-interventions">
+                                </ul>
+                        </div>
                         <div class="result-action">
-                            <button class="cta-button primary" onclick="scrollToSection('resources')">Lihat Sumber Daya Pendukung</button>
+                            <button class="cta-button primary" onclick="scrollToSection('resources')">Jelajahi Sumber Daya Lainnya</button>
                             <button class="cta-button secondary" onclick="restartScreening()">Ulangi Skrining</button>
                         </div>
                     </div>
@@ -175,25 +180,35 @@
             <h2>Sumber Daya & Dukungan</h2>
             <p class="section-subtitle">Tidak sendiri, selalu ada bantuan di sekitarmu.</p>
             <div class="resource-grid">
-                <div class="resource-item reveal-on-scroll" data-detail="detail-1">
+                <div class="resource-item reveal-on-scroll" data-detail="konseling">
                     <img src="images/resource-1.svg" alt="Ilustrasi Konseling">
                     <h3>Layanan Konseling</h3>
                     <p>Temukan profesional yang bisa membantumu.</p>
                 </div>
-                <div class="resource-item reveal-on-scroll" data-detail="detail-2">
+                <div class="resource-item reveal-on-scroll" data-detail="edukasi">
                     <img src="images/resource-2.svg" alt="Ilustrasi Artikel Edukasi">
                     <h3>Artikel Edukasi</h3>
                     <p>Baca lebih lanjut tentang kesehatan mental remaja.</p>
                 </div>
-                <div class="resource-item reveal-on-scroll" data-detail="detail-3">
+                <div class="resource-item reveal-on-scroll" data-detail="relaksasi">
                     <img src="images/resource-3.svg" alt="Ilustrasi Latihan Meditasi">
                     <h3>Latihan Relaksasi</h3>
                     <p>Panduan meditasi singkat & teknik pernapasan.</p>
                 </div>
-                <div class="resource-item reveal-on-scroll" data-detail="detail-4">
+                <div class="resource-item reveal-on-scroll" data-detail="kisah-inspiratif">
                     <img src="images/resource-4.svg" alt="Ilustrasi Kisah Inspiratif">
                     <h3>Kisah Inspiratif</h3>
                     <p>Pelajari dari pengalaman remaja lain.</p>
+                </div>
+                 <div class="resource-item reveal-on-scroll" data-detail="pola-hidup">
+                    <img src="images/resource-5.svg" alt="Ilustrasi Pola Hidup Sehat">
+                    <h3>Pola Hidup Sehat</h3>
+                    <p>Tips menjaga fisik dan mentalmu tetap bugar.</p>
+                </div>
+                <div class="resource-item reveal-on-scroll" data-detail="dukungan-sosial">
+                    <img src="images/resource-6.svg" alt="Ilustrasi Dukungan Sosial">
+                    <h3>Dukungan Sosial</h3>
+                    <p>Membangun lingkaran pertemanan yang positif.</p>
                 </div>
             </div>
 
@@ -334,6 +349,7 @@
             }
         }
 
+        // --- Perubahan di Fungsi calculateResult() ---
         function calculateResult() {
             let totalScore = 0;
             for (let i = 1; i <= 4; i++) { // Only questions 1-4
@@ -344,16 +360,52 @@
             }
 
             let resultText = "";
+            let interventions = []; // Array to store suggested interventions
+
             if (totalScore <= 3) {
                 resultText = "Selamat! Dari hasil skrining awal, kondisi mentalmu terlihat cukup stabil. Tetap jaga pola hidup sehat dan terus positif!";
+                interventions = [
+                    { type: 'edukasi', text: 'Baca artikel tentang "Menjaga Kesehatan Mental di Usia Remaja".' },
+                    { type: 'pola-hidup', text: 'Lanjutkan gaya hidup sehatmu: tidur cukup, gizi seimbang, dan olahraga teratur.' },
+                    { type: 'relaksasi', text: 'Coba teknik relaksasi sederhana untuk mengelola stres sehari-hari.' },
+                ];
             } else if (totalScore <= 7) {
                 resultText = "Kondisi mentalmu mungkin sedang menghadapi sedikit tantangan. Ini normal, dan ada banyak cara untuk mengatasinya. Jelajahi sumber daya kami untuk tips dan dukungan.";
+                interventions = [
+                    { type: 'edukasi', text: 'Pahami lebih dalam tentang "Tanda-tanda Stres pada Remaja" dan cara mengelolanya.' },
+                    { type: 'dukungan-sosial', text: 'Pertimbangkan untuk lebih sering berbicara dengan teman atau keluarga yang kamu percaya.' },
+                    { type: 'relaksasi', text: 'Latih teknik pernapasan atau meditasi untuk menenangkan pikiran.' },
+                    { type: 'pola-hidup', text: 'Pastikan kamu cukup istirahat dan memiliki aktivitas fisik yang teratur.' }
+                ];
             } else if (totalScore <= 10) {
                 resultText = "Hasil skrining menunjukkan beberapa indikator yang perlu perhatian lebih serius. Kami sangat menyarankan untuk berbicara dengan orang dewasa yang kamu percaya atau mencari bantuan profesional.";
+                interventions = [
+                    { type: 'konseling', text: 'Sangat disarankan untuk mencari bantuan profesional dari konselor atau psikolog.' },
+                    { type: 'dukungan-sosial', text: 'Berbagi perasaanmu dengan orang tua, guru, atau wali yang kamu percaya.' },
+                    { type: 'edukasi', text: 'Pelajari tentang "Mengatasi Kecemasan dan Depresi" untuk pemahaman yang lebih baik.' },
+                    { type: 'relaksasi', text: 'Lakukan latihan relaksasi secara rutin untuk menenangkan pikiran.' }
+                ];
             } else {
                 resultText = "Ada indikasi bahwa kamu mungkin sedang mengalami tekanan mental yang signifikan. Jangan ragu untuk segera mencari bantuan profesional dari psikolog atau konselor. Kamu tidak sendiri.";
+                interventions = [
+                    { type: 'konseling', text: 'Prioritaskan untuk segera berkonsultasi dengan psikolog atau psikiater. Ini adalah langkah paling penting.' },
+                    { type: 'dukungan-sosial', text: 'Cari dukungan dari orang terdekat. Jangan ragu untuk meminta bantuan.' },
+                    { type: 'edukasi', text: 'Pahami "Pentingnya Bantuan Profesional untuk Kesehatan Mental" dan stigma yang keliru.' }
+                ];
             }
+
             document.getElementById('result-text').textContent = resultText;
+
+            // Display suggested interventions
+            const suggestedInterventionsList = document.getElementById('suggested-interventions');
+            suggestedInterventionsList.innerHTML = ''; // Clear previous interventions
+            interventions.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item.text;
+                // Add a click listener to open the relevant resource detail
+                li.onclick = () => showResourceDetailFromIntervention(item.type);
+                suggestedInterventionsList.appendChild(li);
+            });
         }
 
         function restartScreening() {
@@ -361,54 +413,76 @@
                 radio.checked = false;
             });
             showQuestionSet(1);
-            document.getElementById('resultArea').style.display = 'none'; // Hide result area if it was shown
+            document.getElementById('suggested-interventions').innerHTML = ''; // Clear interventions
         }
 
         // Initial call to set up the first question set
         showQuestionSet(1);
 
-        // Resource Details Logic
+        // --- Perubahan dan Penambahan Data di resourceDetails ---
         const resourceDetails = {
-            'detail-1': {
+            'konseling': {
                 title: 'Layanan Konseling Profesional',
-                text: 'Jika kamu merasa kesulitan mengatasi masalah sendirian, berbicara dengan konselor atau psikolog profesional dapat sangat membantu. Mereka dapat memberikan strategi dan dukungan yang kamu butuhkan.',
-                link: 'https://pijarpsikologi.org/' // Contoh link
+                text: 'Jika kamu merasa kesulitan mengatasi masalah sendirian, berbicara dengan konselor atau psikolog profesional dapat sangat membantu. Mereka dapat memberikan strategi dan dukungan yang kamu butuhkan. Ingat, mencari bantuan adalah tanda kekuatan.',
+                link: 'https://pijarpsikologi.org/cari-psikolog-online/' // Contoh link spesifik
             },
-            'detail-2': {
+            'edukasi': {
                 title: 'Artikel Edukasi Kesehatan Mental',
-                text: 'Perluas pemahamanmu tentang berbagai aspek kesehatan mental melalui koleksi artikel edukatif kami. Pengetahuan adalah langkah awal untuk perubahan.',
-                link: 'https://hellosehat.com/kesehatan-mental/' // Contoh link
+                text: 'Perluas pemahamanmu tentang berbagai aspek kesehatan mental melalui koleksi artikel edukatif kami. Pengetahuan adalah langkah awal untuk perubahan dan pengelolaan diri yang lebih baik.',
+                link: 'https://hellosehat.com/kesehatan-mental/remaja/' // Contoh link spesifik
             },
-            'detail-3': {
+            'relaksasi': {
                 title: 'Latihan Relaksasi & Meditasi',
-                text: 'Teknik relaksasi dan meditasi dapat membantu menenangkan pikiran, mengurangi stres, dan meningkatkan fokus. Cobalah panduan audio atau video singkat kami.',
+                text: 'Teknik relaksasi dan meditasi dapat membantu menenangkan pikiran, mengurangi stres, dan meningkatkan fokus. Cobalah panduan audio atau video singkat kami untuk membantumu merasa lebih tenang dan terkontrol.',
                 link: 'https://calm.com/' // Contoh link
             },
-            'detail-4': {
+            'kisah-inspiratif': {
                 title: 'Kisah Inspiratif & Pengalaman Nyata',
-                text: 'Dengarkan atau baca cerita dari remaja lain yang telah melalui tantangan kesehatan mental dan berhasil mengatasinya. Kamu akan merasa tidak sendiri dan menemukan harapan.',
+                text: 'Dengarkan atau baca cerita dari remaja lain yang telah melalui tantangan kesehatan mental dan berhasil mengatasinya. Kamu akan merasa tidak sendiri, mendapatkan inspirasi, dan menemukan harapan dari pengalaman mereka.',
                 link: '#' // Ganti dengan link ke halaman cerita di website Anda
+            },
+            'pola-hidup': {
+                title: 'Pola Hidup Sehat untuk Kesehatan Mental',
+                text: 'Kesehatan fisik sangat memengaruhi kesehatan mental. Pelajari tips tentang pentingnya tidur cukup, nutrisi seimbang, hidrasi yang cukup, dan olahraga teratur untuk mendukung kesejahteraan mentalmu.',
+                link: 'https://www.halodoc.com/artikel/menjaga-kesehatan-mental-dengan-gaya-hidup-sehat' // Contoh link
+            },
+            'dukungan-sosial': {
+                title: 'Membangun Dukungan Sosial yang Positif',
+                text: 'Hubungan yang sehat dengan teman dan keluarga sangat penting. Temukan cara untuk membangun dan memelihara koneksi sosial yang kuat, serta cara untuk mendekati orang yang kamu percaya ketika kamu membutuhkan dukungan.',
+                link: '#' // Ganti dengan link ke artikel tentang dukungan sosial
             }
         };
 
         document.querySelectorAll('.resource-item').forEach(item => {
             item.addEventListener('click', function() {
                 const detailId = this.dataset.detail;
-                const detail = resourceDetails[detailId];
-
-                document.getElementById('detail-title').textContent = detail.title;
-                document.getElementById('detail-text').textContent = detail.text;
-                const detailLink = document.getElementById('detail-link');
-                if (detail.link && detail.link !== '#') {
-                    detailLink.href = detail.link;
-                    detailLink.style.display = 'inline-block';
-                } else {
-                    detailLink.style.display = 'none';
-                }
-
-                document.getElementById('resource-detail-overlay').classList.add('open');
+                openResourceDetail(detailId);
             });
         });
+
+        function openResourceDetail(detailId) {
+            const detail = resourceDetails[detailId];
+            if (!detail) return; // Guard clause
+
+            document.getElementById('detail-title').textContent = detail.title;
+            document.getElementById('detail-text').textContent = detail.text;
+            const detailLink = document.getElementById('detail-link');
+            if (detail.link && detail.link !== '#') {
+                detailLink.href = detail.link;
+                detailLink.style.display = 'inline-block';
+            } else {
+                detailLink.style.display = 'none';
+            }
+
+            document.getElementById('resource-detail-overlay').classList.add('open');
+        }
+
+        // New function to open resource detail from an intervention suggestion
+        function showResourceDetailFromIntervention(resourceKey) {
+            openResourceDetail(resourceKey);
+            // Optionally, scroll to the resources section if it's not visible
+            scrollToSection('resources');
+        }
 
         function closeResourceDetail() {
             document.getElementById('resource-detail-overlay').classList.remove('open');
