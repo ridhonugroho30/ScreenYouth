@@ -81,8 +81,12 @@
 
     <section class="screening-section animated-section" id="screening">
         <div class="container">
-            <h2>Mulai Screening Mandiri</h2>
-            <p class="section-subtitle">Jawab beberapa pertanyaan untuk mendapatkan gambaran awal kondisi mentalmu.</p>
+            <h2>Skrining Awal Kecemasan (HAM-A Sederhana)</h2>
+            <p class="section-subtitle">Jawab beberapa pertanyaan tentang bagaimana perasaanmu dalam 2 minggu terakhir.</p>
+            <div class="disclaimer-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>Penting:</strong> Skrining ini adalah alat bantu awal dan <strong>bukan pengganti diagnosis profesional</strong>. Jika Anda khawatir dengan hasilnya, segera konsultasi dengan psikolog atau psikiater.</p>
+            </div>
 
             <div class="screening-steps">
                 <div class="step-indicator" id="step-1-indicator" data-step="1" onclick="showQuestionSet(1)">
@@ -91,15 +95,15 @@
                 </div>
                 <div class="step-indicator" id="step-2-indicator" data-step="2" onclick="showQuestionSet(2)">
                     <span class="step-number">2</span>
-                    <span class="step-title">Pola Tidur & Energi</span>
+                    <span class="step-title">Fisik & Tidur</span>
                 </div>
                 <div class="step-indicator" id="step-3-indicator" data-step="3" onclick="showQuestionSet(3)">
                     <span class="step-number">3</span>
-                    <span class="step-title">Hubungan Sosial</span>
+                    <span class="step-title">Pencernaan & Lainnya</span>
                 </div>
                 <div class="step-indicator" id="step-4-indicator" data-step="4" onclick="showQuestionSet(4)">
                     <span class="step-number">4</span>
-                    <span class="step-title">Fokus & Motivasi</span>
+                    <span class="step-title">Fokus & Ketakutan</span>
                 </div>
                 <div class="step-indicator" id="step-5-indicator" data-step="5" onclick="showQuestionSet(5)">
                     <span class="step-number">5</span>
@@ -109,20 +113,38 @@
 
             <div class="screening-quiz">
                 <div class="question-set active" id="qs-1">
-                    <h3>Bagaimana perasaanmu sebagian besar waktu selama 2 minggu terakhir?</h3>
-                    <label><input type="radio" name="q1" value="0"> Sangat bahagia/semangat</label>
-                    <label><input type="radio" name="q1" value="1"> Cukup baik</label>
-                    <label><input type="radio" name="q1" value="2"> Agak sedih/murung</label>
-                    <label><input type="radio" name="q1" value="3"> Sangat sedih/putus asa</label>
+                    <h3>Dalam 2 minggu terakhir, seberapa sering kamu merasakan hal-hal berikut?</h3>
+                    <h4>Kecemasan (Khawatir, antisipasi buruk, iritabilitas)</h4>
+                    <label><input type="radio" name="q1a" value="0"> Tidak ada atau sangat ringan</label>
+                    <label><input type="radio" name="q1a" value="1"> Ringan (sedikit kekhawatiran)</label>
+                    <label><input type="radio" name="q1a" value="2"> Sedang (khawatir cukup sering)</label>
+                    <label><input type="radio" name="q1a" value="3"> Berat (sangat khawatir, sering iritabel)</label>
+                    <label><input type="radio" name="q1a" value="4"> Sangat berat (hampir terus-menerus khawatir, sangat iritabel)</label>
+
+                    <h4>Ketegangan (Perasaan tegang, gelisah, gemetar, tidak bisa rileks)</h4>
+                    <label><input type="radio" name="q1b" value="0"> Tidak ada atau sangat ringan</label>
+                    <label><input type="radio" name="q1b" value="1"> Ringan (sedikit tegang, gelisah sesekali)</label>
+                    <label><input type="radio" name="q1b" value="2"> Sedang (cukup tegang, sulit rileks)</label>
+                    <label><input type="radio" name="q1b" value="3"> Berat (sangat tegang, gemetar, gelisah sepanjang waktu)</label>
+                    <label><input type="radio" name="q1b" value="4"> Sangat berat (tidak bisa rileks sama sekali, gemetar hebat)</label>
                     <button class="next-prev-btn" onclick="nextQuestionSet()">Berikutnya <i class="fas fa-chevron-right"></i></button>
                 </div>
 
                 <div class="question-set" id="qs-2">
-                    <h3>Bagaimana pola tidurmu dan tingkat energimu?</h3>
-                    <label><input type="radio" name="q2" value="0"> Tidur nyenyak & energik</label>
-                    <label><input type="radio" name="q2" value="1"> Cukup tidur, kadang lelah</label>
-                    <label><input type="radio" name="q2" value="2"> Sulit tidur/terlalu banyak tidur, sering lelah</label>
-                    <label><input type="radio" name="q2" value="3"> Hampir tidak bisa tidur/tidur terus, sangat lelah</label>
+                    <h3>Bagaimana kondisi fisik dan pola tidurmu dalam 2 minggu terakhir?</h3>
+                    <h4>Insomnia (Sulit tidur, terbangun malam hari, tidur tidak nyenyak)</h4>
+                    <label><input type="radio" name="q2a" value="0"> Tidak ada kesulitan tidur</label>
+                    <label><input type="radio" name="q2a" value="1"> Ringan (sedikit sulit tidur)</label>
+                    <label><input type="radio" name="q2a" value="2"> Sedang (sering sulit tidur, kadang terbangun)</label>
+                    <label><input type="radio" name="q2a" value="3"> Berat (sangat sulit tidur, sering terbangun)</label>
+                    <label><input type="radio" name="q2a" value="4"> Sangat berat (hampir tidak tidur sama sekali)</label>
+
+                    <h4>Gejala Fisik (Nyeri otot/kaku, gemetar, lemas, pusing)</h4>
+                    <label><input type="radio" name="q2b" value="0"> Tidak ada</label>
+                    <label><input type="radio" name="q2b" value="1"> Ringan (sesekali merasakan)</label>
+                    <label><input type="radio" name="q2b" value="2"> Sedang (cukup sering merasakan, mengganggu sedikit)</label>
+                    <label><input type="radio" name="q2b" value="3"> Berat (sering sekali, cukup mengganggu)</label>
+                    <label><input type="radio" name="q2b" value="4"> Sangat berat (hampir terus-menerus, sangat mengganggu)</label>
                     <div class="nav-buttons">
                         <button class="next-prev-btn prev" onclick="prevQuestionSet()"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
                         <button class="next-prev-btn" onclick="nextQuestionSet()">Berikutnya <i class="fas fa-chevron-right"></i></button>
@@ -130,11 +152,20 @@
                 </div>
 
                 <div class="question-set" id="qs-3">
-                    <h3>Bagaimana kamu berinteraksi dengan teman dan keluarga?</h3>
-                    <label><input type="radio" name="q3" value="0"> Sangat aktif & menikmati</label>
-                    <label><input type="radio" name="q3" value="1"> Cukup berinteraksi</label>
-                    <label><input type="radio" name="q3" value="2"> Lebih suka menyendiri</label>
-                    <label><input type="radio" name="q3" value="3"> Menghindari semua interaksi</label>
+                    <h3>Apakah kamu mengalami gejala fisik lain ini dalam 2 minggu terakhir?</h3>
+                    <h4>Jantung & Napas (Jantung berdebar, sesak napas, nyeri dada)</h4>
+                    <label><input type="radio" name="q3a" value="0"> Tidak ada</label>
+                    <label><input type="radio" name="q3a" value="1"> Ringan (sesekali merasakan)</label>
+                    <label><input type="radio" name="q3a" value="2"> Sedang (cukup sering merasakan, mengganggu sedikit)</label>
+                    <label><input type="radio" name="q3a" value="3"> Berat (sering sekali, cukup mengganggu)</label>
+                    <label><input type="radio" name="q3a" value="4"> Sangat berat (hampir terus-menerus, sangat mengganggu)</label>
+
+                    <h4>Pencernaan & Lainnya (Mual, diare, konstipasi, sering kencing, mulut kering, berkeringat)</h4>
+                    <label><input type="radio" name="q3b" value="0"> Tidak ada</label>
+                    <label><input type="radio" name="q3b" value="1"> Ringan (sesekali merasakan)</label>
+                    <label><input type="radio" name="q3b" value="2"> Sedang (cukup sering merasakan, mengganggu sedikit)</label>
+                    <label><input type="radio" name="q3b" value="3"> Berat (sering sekali, cukup mengganggu)</label>
+                    <label><input type="radio" name="q3b" value="4"> Sangat berat (hampir terus-menerus, sangat mengganggu)</label>
                     <div class="nav-buttons">
                         <button class="next-prev-btn prev" onclick="prevQuestionSet()"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
                         <button class="next-prev-btn" onclick="nextQuestionSet()">Berikutnya <i class="fas fa-chevron-right"></i></button>
@@ -142,11 +173,27 @@
                 </div>
 
                 <div class="question-set" id="qs-4">
-                    <h3>Bagaimana tingkat fokus dan motivasimu belajar/melakukan hobi?</h3>
-                    <label><input type="radio" name="q4" value="0"> Sangat fokus & termotivasi</label>
-                    <label><input type="radio" name="q4" value="1"> Cukup fokus, motivasi bervariasi</label>
-                    <label><input type="radio" name="q4" value="2"> Sulit fokus, kehilangan minat pada banyak hal</label>
-                    <label><input type="radio" name="q4" value="3"> Hampir tidak bisa fokus, tidak ada motivasi sama sekali</label>
+                    <h3>Bagaimana dengan fokus, perasaan, dan ketakutanmu dalam 2 minggu terakhir?</h3>
+                    <h4>Fokus & Daya Ingat (Sulit konsentrasi, daya ingat buruk)</h4>
+                    <label><input type="radio" name="q4a" value="0"> Tidak ada kesulitan</label>
+                    <label><input type="radio" name="q4a" value="1"> Ringan (sedikit sulit fokus/ingat)</label>
+                    <label><input type="radio" name="q4a" value="2"> Sedang (sering sulit fokus/ingat, mengganggu belajar)</label>
+                    <label><input type="radio" name="q4a" value="3"> Berat (sangat sulit fokus/ingat, mengganggu aktivitas)</label>
+                    <label><input type="radio" name="q4a" value="4"> Sangat berat (hampir tidak bisa fokus sama sekali)</label>
+
+                    <h4>Perasaan Depresi (Kehilangan minat, kurang gembira, sedih)</h4>
+                    <label><input type="radio" name="q4b" value="0"> Tidak ada</label>
+                    <label><input type="radio" name="q4b" value="1"> Ringan (sedikit kehilangan minat/mood kurang baik)</label>
+                    <label><input type="radio" name="q4b" value="2"> Sedang (cukup sering kehilangan minat, mood sedih)</label>
+                    <label><input type="radio" name="q4b" value="3"> Berat (sering merasa sedih, kehilangan banyak minat)</label>
+                    <label><input type="radio" name="q4b" value="4"> Sangat berat (putus asa, tidak tertarik pada apa pun)</label>
+
+                    <h4>Ketakutan (Takut pada hal tertentu: gelap, orang asing, keramaian, binatang, dll.)</h4>
+                    <label><input type="radio" name="q4c" value="0"> Tidak ada ketakutan yang tidak wajar</label>
+                    <label><input type="radio" name="q4c" value="1"> Ringan (ketakutan sesekali pada hal tertentu)</label>
+                    <label><input type="radio" name="q4c" value="2"> Sedang (cukup sering takut, menghindari situasi tertentu)</label>
+                    <label><input type="radio" name="q4c" value="3"> Berat (sangat takut, sangat membatasi aktivitas)</label>
+                    <label><input type="radio" name="q4c" value="4"> Sangat berat (panik hebat, phobia parah)</label>
                     <div class="nav-buttons">
                         <button class="next-prev-btn prev" onclick="prevQuestionSet()"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
                         <button class="next-prev-btn" onclick="nextQuestionSet()">Lihat Hasil <i class="fas fa-clipboard-check"></i></button>
@@ -154,7 +201,7 @@
                 </div>
 
                 <div class="question-set" id="qs-5">
-                    <h3>Hasil Skrining Awal Anda</h3>
+                    <h3>Hasil Skrining Awal Kecemasan Anda</h3>
                     <div class="screening-result">
                         <p id="result-text"></p>
                         <div class="intervention-suggestions">
@@ -200,15 +247,12 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                // Hanya lakukan smooth scroll jika target ada di halaman ini
                 if (document.querySelector(targetId)) {
                     document.querySelector(targetId).scrollIntoView({
                         behavior: 'smooth'
                     });
-                    // Close mobile nav if open
                     document.getElementById('mobile-nav-overlay').classList.remove('open');
                 } else {
-                    // Jika tidak, biarkan browser menangani link eksternal (contohnya resources.html)
                     window.location.href = targetId;
                 }
             });
@@ -227,7 +271,7 @@
             document.getElementById('mobile-nav-overlay').classList.remove('open');
         });
 
-        // Screening Quiz Logic (tidak ada perubahan besar di sini)
+        // Screening Quiz Logic
         let currentQuestionSet = 1;
         const totalQuestionSets = 5;
 
@@ -255,11 +299,27 @@
 
         function nextQuestionSet() {
             const currentQsElement = document.getElementById(`qs-${currentQuestionSet}`);
-            const selectedOption = currentQsElement.querySelector(`input[name="q${currentQuestionSet}"]:checked`);
+            const questionNamesInSet = [];
+            // Dynamically get all radio button names in the current set
+            currentQsElement.querySelectorAll('input[type="radio"]').forEach(input => {
+                if (!questionNamesInSet.includes(input.name)) {
+                    questionNamesInSet.push(input.name);
+                }
+            });
 
-            if (currentQuestionSet < totalQuestionSets -1 && !selectedOption) {
-                alert("Mohon pilih salah satu jawaban sebelum melanjutkan.");
-                return;
+            // Validate if all questions in the current set have an answer
+            let allAnswered = true;
+            if (currentQuestionSet < totalQuestionSets -1) { // Don't validate for the result page
+                for (const qName of questionNamesInSet) {
+                    if (!currentQsElement.querySelector(`input[name="${qName}"]:checked`)) {
+                        allAnswered = false;
+                        break;
+                    }
+                }
+                if (!allAnswered) {
+                    alert("Mohon jawab semua pertanyaan di bagian ini sebelum melanjutkan.");
+                    return;
+                }
             }
 
             if (currentQuestionSet < totalQuestionSets) {
@@ -307,43 +367,48 @@
             }
         }
 
+        // --- Fungsi calculateResult() yang disesuaikan untuk HAM-A ---
         function calculateResult() {
             let totalScore = 0;
-            for (let i = 1; i <= 4; i++) {
-                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+            // Collect scores from all relevant radio button groups
+            const questionNames = ['q1a', 'q1b', 'q2a', 'q2b', 'q3a', 'q3b', 'q4a', 'q4b', 'q4c']; // All questions now
+            questionNames.forEach(name => {
+                const selectedOption = document.querySelector(`input[name="${name}"]:checked`);
                 if (selectedOption) {
                     totalScore += parseInt(selectedOption.value);
                 }
-            }
+            });
 
             let resultText = "";
             let interventions = [];
 
-            if (totalScore <= 3) {
-                resultText = "Selamat! Dari hasil skrining awal, kondisi mentalmu terlihat cukup stabil. Tetap jaga pola hidup sehat dan terus positif!";
+            // Interpretasi skor HAM-A Sederhana (skala 0-4 per item, 9 item = max 36)
+            // Ini adalah interpretasi sederhana untuk tujuan skrining, bukan klinis
+            if (totalScore <= 7) {
+                resultText = `Skor Anda: ${totalScore}. Tingkat kecemasan Anda saat ini terlihat normal atau sangat ringan. Pertahankan gaya hidup sehat dan tetap pantau perasaan Anda.`;
                 interventions = [
                     { type: 'edukasi', text: 'Baca artikel tentang "Menjaga Kesehatan Mental di Usia Remaja".' },
                     { type: 'pola-hidup', text: 'Lanjutkan gaya hidup sehatmu: tidur cukup, gizi seimbang, dan olahraga teratur.' },
                     { type: 'relaksasi', text: 'Coba teknik relaksasi sederhana untuk mengelola stres sehari-hari.' },
                 ];
-            } else if (totalScore <= 7) {
-                resultText = "Kondisi mentalmu mungkin sedang menghadapi sedikit tantangan. Ini normal, dan ada banyak cara untuk mengatasinya. Jelajahi sumber daya kami untuk tips dan dukungan.";
+            } else if (totalScore <= 14) {
+                resultText = `Skor Anda: ${totalScore}. Anda mungkin mengalami kecemasan ringan hingga sedang. Gejala ini bisa membaik dengan pengelolaan diri dan dukungan awal.`;
                 interventions = [
                     { type: 'edukasi', text: 'Pahami lebih dalam tentang "Tanda-tanda Stres pada Remaja" dan cara mengelolanya.' },
                     { type: 'dukungan-sosial', text: 'Pertimbangkan untuk lebih sering berbicara dengan teman atau keluarga yang kamu percaya.' },
                     { type: 'relaksasi', text: 'Latih teknik pernapasan atau meditasi untuk menenangkan pikiran.' },
                     { type: 'pola-hidup', text: 'Pastikan kamu cukup istirahat dan memiliki aktivitas fisik yang teratur.' }
                 ];
-            } else if (totalScore <= 10) {
-                resultText = "Hasil skrining menunjukkan beberapa indikator yang perlu perhatian lebih serius. Kami sangat menyarankan untuk berbicara dengan orang dewasa yang kamu percaya atau mencari bantuan profesional.";
+            } else if (totalScore <= 23) {
+                resultText = `Skor Anda: ${totalScore}. Ada indikasi kecemasan sedang hingga berat. Kami sangat menyarankan untuk mencari bantuan profesional dari psikolog atau konselor untuk evaluasi lebih lanjut.`;
                 interventions = [
                     { type: 'konseling', text: 'Sangat disarankan untuk mencari bantuan profesional dari konselor atau psikolog.' },
                     { type: 'dukungan-sosial', text: 'Berbagi perasaanmu dengan orang tua, guru, atau wali yang kamu percaya.' },
                     { type: 'edukasi', text: 'Pelajari tentang "Mengatasi Kecemasan dan Depresi" untuk pemahaman yang lebih baik.' },
                     { type: 'relaksasi', text: 'Lakukan latihan relaksasi secara rutin untuk menenangkan pikiran.' }
                 ];
-            } else {
-                resultText = "Ada indikasi bahwa kamu mungkin sedang mengalami tekanan mental yang signifikan. Jangan ragu untuk segera mencari bantuan profesional dari psikolog atau konselor. Kamu tidak sendiri.";
+            } else { // totalScore > 23
+                resultText = `Skor Anda: ${totalScore}. Ada indikasi kecemasan berat atau sangat berat. Sangat penting untuk segera mencari bantuan profesional dari psikolog atau psikiater. Anda tidak sendirian dalam menghadapi ini.`;
                 interventions = [
                     { type: 'konseling', text: 'Prioritaskan untuk segera berkonsultasi dengan psikolog atau psikiater. Ini adalah langkah paling penting.' },
                     { type: 'dukungan-sosial', text: 'Cari dukungan dari orang terdekat. Jangan ragu untuk meminta bantuan.' },
@@ -376,15 +441,6 @@
 
         // Initial call to set up the first question set
         showQuestionSet(1);
-
-        // --- Hapus logika resourceDetails dan overlay dari index.html ---
-        // Karena ini akan dikelola di resources.html
-        // Resource Details Logic (Dihapus dari sini)
-        // const resourceDetails = {...};
-        // document.querySelectorAll('.resource-item').forEach(...);
-        // function openResourceDetail(...);
-        // function showResourceDetailFromIntervention(...); // ini dimodifikasi di atas
-        // function closeResourceDetail(...);
 
         // Scroll Reveal Animation (Sederhana)
         const animatedSections = document.querySelectorAll('.animated-section');
